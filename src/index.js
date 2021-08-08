@@ -7,6 +7,7 @@ const switcherThemeRef = document.querySelector('#theme-switch-toggle');
 
 function createMenuMarkup(dataTemplate) {
   return dataTemplate.map(markupTemplate).join('')
+  // return dataTemplate.map(el => markupTemplate(el)).join('')
 };
 
 
@@ -27,16 +28,17 @@ function setCurrentTheme() {
     switcherThemeRef.checked = true;
     document.body.classList.add(Theme.DARK);
    }
- }
+};
 
 
-switcherThemeRef.addEventListener('change', themeSwitcher)
+switcherThemeRef.addEventListener('change', themeSwitcher);
 
 function themeSwitcher(e) {
 
   if (e.target.checked) {
     localStorage.setItem('theme', Theme.DARK);
     document.body.classList.add(Theme.DARK);
+    document.body.classList.remove(Theme.LIGHT)
   } else {
     localStorage.setItem('theme', Theme.LIGHT);
     document.body.classList.replace(Theme.DARK, Theme.LIGHT);
